@@ -8,8 +8,6 @@ Plasma.
 > Advanced Agentic Coding) using the **Gemini 3.8 Flash** model in pair-programming collaboration
 > with the user (October 2026).
 
----
-
 ## Features
 
 - **In-Place Upgrades**: Re-running the script updates Antigravity cleanly to the latest downloaded
@@ -33,8 +31,6 @@ Plasma.
   Taskbar, and KRunner (`Alt+Space`).
 - **Clean Uninstallation**: Single-command uninstallation via `--uninstall`.
 
----
-
 ## Quick Start
 
 ### 1. Make the script executable
@@ -56,8 +52,6 @@ Or run without arguments to auto-detect the newest build in `~/Downloads`:
 ```bash
 ./install-antigravity.sh
 ```
-
----
 
 ## How to Perform In-Place Upgrades
 
@@ -90,8 +84,6 @@ When a newer version of Antigravity 2.0 is released, updating is quick and strai
   credentials, and settings live in `~/.config/Antigravity` (per standard Electron/Linux
   specification) and are **never touched or overwritten during an upgrade**.
 
----
-
 ## Command-Line Options
 
 ```text
@@ -110,8 +102,6 @@ Options:
   -h, --help             Show this help message and exit.
 ```
 
----
-
 ## Installed File Locations
 
 | Component               | Default Location                                 |
@@ -123,14 +113,10 @@ Options:
 | **Sized Icon Caches**   | `~/.local/share/icons/hicolor/<size>/apps/`      |
 | **User Data & Settings**| `~/.config/Antigravity/` *(Untouched by update)* |
 
----
-
 ## Launching Antigravity
 
 - **From KDE Application Menu / KRunner**: Press `Alt + Space` and type `Antigravity`.
 - **From Terminal**: Run `antigravity` (or in background: `antigravity &`).
-
----
 
 ## Attribution & Provenance
 

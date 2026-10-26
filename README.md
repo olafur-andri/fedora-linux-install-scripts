@@ -17,6 +17,8 @@ DeepMind
    **Antigravity 2.0** (`.tar.gz`).
 2. [**`install-godot.sh`**](#2-godot-engine-installer--updater) — Installer & updater for **Godot
    Engine** (`.zip`).
+3. [**`install-lm-studio.sh`**](#3-lm-studio-installer--updater) — Installer & updater for **LM
+   Studio** (`.AppImage`).
 
 ---
 
@@ -139,13 +141,90 @@ Options:
 
 ---
 
+## 3. LM Studio Installer & Updater
+
+### Features
+
+- **Safe User-Space Destination**: Installs AppImage application files to `~/.local/share/lm-studio`,
+  creating stable symlinks (`lm-studio` and `LM-Studio.AppImage`) pointing to the active versioned build.
+  > [!IMPORTANT]
+  > LM Studio stores downloaded models in `~/.lmstudio` and cache files in `~/.cache/lm-studio`.
+  Application binaries in `~/.local/share/lm-studio` are fully isolated, so your downloaded models,
+  server configs, and chat histories are **100% safe and untouched during updates or uninstalls**.
+- **Automatic `.AppImage` Discovery**: Automatically detects the newest `*lm*studio*.AppImage` in
+  `~/Downloads` or the current working directory if no path argument is provided.
+- **Disk Space Preservation**: Automatically removes previous multi-gigabyte AppImage builds inside
+  `~/.local/share/lm-studio` upon updating to a new version, keeping your SSD clean.
+- **Official High-Resolution Icon Extraction**: Automatically extracts the official bundled icons
+  across all 8 FreeDesktop resolutions (`16x16`, `24x24`, `32x32`, `48x48`, `64x64`, `128x128`,
+  `256x256`, and `512x512`) into `~/.local/share/icons/hicolor/`.
+- **Custom Icon Support**: Optionally specify your own icon with `--icon /path/to/icon.png`.
+- **Terminal Integration**: Installs `~/.local/bin/lm-studio` plus a convenience symlink
+  `~/.local/bin/lmstudio` so you can launch LM Studio from anywhere.
+- **KDE Plasma & Freedesktop `.desktop` Entry**: Creates `~/.local/share/applications/lm-studio.desktop`
+  with correct window matching (`StartupWMClass=ai.elementlabs.lmstudio`), categories
+  (`Development;Science;ArtificialIntelligence;`), and URI protocol handling
+  (`MimeType=x-scheme-handler/lmstudio;`).
+- **Clean Uninstallation**: Single-command uninstallation via `--uninstall` while preserving your
+  downloaded models.
+
+### Usage
+
+```bash
+chmod +x install-lm-studio.sh
+
+# Auto-detect latest LM Studio .AppImage in ~/Downloads:
+./install-lm-studio.sh
+
+# Explicit AppImage file:
+./install-lm-studio.sh ~/Downloads/LM-Studio-0.4.26-4-x64.AppImage
+
+# Custom icon:
+./install-lm-studio.sh --icon ~/Pictures/my-icon.png
+
+# Uninstall:
+./install-lm-studio.sh --uninstall
+```
+
+### Command-Line Options
+
+```text
+Usage:
+  install-lm-studio.sh [OPTIONS] [PATH_TO_APPIMAGE]
+
+Options:
+  -d, --dest <DIR>       Destination directory for application files
+                         (default: ~/.local/share/lm-studio)
+  -b, --bin-dir <DIR>    Directory for terminal launcher command(s)
+                         (default: ~/.local/bin)
+  -i, --icon <PATH>      Custom application icon (.png or .svg).
+                         If omitted, extracts official icons (16x16 to 512x512).
+  -u, --uninstall        Remove LM Studio application files, desktop entry,
+                         icons, and terminal launchers. Models in ~/.lmstudio remain intact.
+  -h, --help             Show this help message and exit.
+```
+
+### Installed File Locations
+
+| Component                | Default Location                                | Notes                                       |
+|:-------------------------|:------------------------------------------------|:--------------------------------------------|
+| **AppImage Binary**      | `~/.local/share/lm-studio/`                     | Versioned AppImage + stable symlink `lm-studio` |
+| **Terminal Launchers**   | `~/.local/bin/lm-studio` & `~/.local/bin/lmstudio` | Launch LM Studio from command line          |
+| **Desktop Entry**        | `~/.local/share/applications/lm-studio.desktop` | KDE Menu, KRunner & URL protocol handler    |
+| **Application Icons**    | `~/.local/share/icons/hicolor/<size>/apps/`     | Official high-res PNG icons (16x16 to 512x512) |
+| **Downloaded Models**    | `~/.lmstudio/`                                  | *Untouched by installer/updater*            |
+| **Caches & Settings**    | `~/.cache/lm-studio/`                           | *Untouched by installer/updater*            |
+
+---
+
 ## Launching Applications
 
-- **From KDE Application Launcher / KRunner**: Press `Alt + Space` and search for `Antigravity` or
-  `Godot`.
+- **From KDE Application Launcher / KRunner**: Press `Alt + Space` and search for `Antigravity`,
+  `Godot`, or `LM Studio`.
 - **From Terminal**:
     - `antigravity`
     - `godot` (or `godot -e` to edit, `godot project.godot` to open a project)
+    - `lm-studio` (or `lmstudio`)
 
 ---
 

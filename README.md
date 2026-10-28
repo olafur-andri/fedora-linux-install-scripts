@@ -13,16 +13,18 @@ DeepMind
 
 ## Available Scripts
 
-1. [**`install-antigravity.sh`**](#1-antigravity-20-installer--updater) — Installer & updater for
-   **Antigravity 2.0** (`.tar.gz`).
-2. [**`install-godot.sh`**](#2-godot-engine-installer--updater) — Installer & updater for **Godot
+1. [**`install-antigravity-app.sh`**](#1-antigravity-app-installer--updater) — Installer & updater for
+   **Antigravity 2.0 App** (`.tar.gz`).
+2. [**`install-antigravity-ide.sh`**](#2-antigravity-ide-installer--updater) — Installer & updater for
+   **Antigravity IDE** (`.tar.gz`).
+3. [**`install-godot.sh`**](#3-godot-engine-installer--updater) — Installer & updater for **Godot
    Engine** (`.zip`).
-3. [**`install-lm-studio.sh`**](#3-lm-studio-installer--updater) — Installer & updater for **LM
+4. [**`install-lm-studio.sh`**](#4-lm-studio-installer--updater) — Installer & updater for **LM
    Studio** (`.AppImage`).
 
 ---
 
-## 1. Antigravity 2.0 Installer & Updater
+## 1. Antigravity App Installer & Updater
 
 ### Features
 
@@ -39,7 +41,7 @@ DeepMind
   in `~/.local/share/icons/hicolor/`.
 - **Custom Icon Support**: Optionally specify your own icon with `--icon /path/to/icon.png`.
 - **Automatic Archive Detection**: If no archive path is provided, automatically discovers the
-  newest `*Antigravity*.tar.gz` in `~/Downloads` or the current directory.
+  newest `*Antigravity*.tar.gz` (excluding IDE tarballs) in `~/Downloads` or the current directory.
 - **Instant Desktop Refresh**: Updates the KDE Sycoca database (`kbuildsycoca6`), GTK icon cache,
   and desktop database immediately.
 - **Clean Uninstallation**: Single-command uninstallation via `--uninstall`.
@@ -47,21 +49,57 @@ DeepMind
 ### Usage
 
 ```bash
-chmod +x install-antigravity.sh
+chmod +x install-antigravity-app.sh
 
 # Auto-detect latest .tar.gz in ~/Downloads:
-./install-antigravity.sh
+./install-antigravity-app.sh
 
 # Explicit tarball:
-./install-antigravity.sh ~/Downloads/Antigravity.tar.gz
+./install-antigravity-app.sh ~/Downloads/Antigravity.tar.gz
 
 # Uninstall:
-./install-antigravity.sh --uninstall
+./install-antigravity-app.sh --uninstall
 ```
 
 ---
 
-## 2. Godot Engine Installer & Updater
+## 2. Antigravity IDE Installer & Updater
+
+### Features
+
+- **In-Place Upgrades**: Re-running the script cleanly upgrades Antigravity IDE while preserving your
+  extensions, workspace settings, and cached state in `~/.antigravity-ide`.
+- **Self-Contained User Install**: Installs to `~/.local/share/antigravity-ide` without needing `sudo`.
+- **CLI & Remote Integration**: Installs the `antigravity-ide` launcher into `~/.local/bin` along with
+  convenient alias `agy-ide`, providing full CLI capabilities (`antigravity-ide .`, `--diff`, etc.).
+- **KDE Plasma & Freedesktop `.desktop` Entry**: Creates `~/.local/share/applications/antigravity-ide.desktop`
+  with folder/file opening support (`%F`), `new-empty-window` desktop action, and window matching
+  (`StartupWMClass=antigravity-ide`).
+- **Official Icon Extraction**: Integrates the official 1024×1024 RGBA icon and generates standard
+  resolutions (`512x512`, `256x256`, `128x128`, `64x64`, `48x48`, `32x32`, `16x16`) into
+  `~/.local/share/icons/hicolor/`.
+- **Automatic Archive Detection**: Discovers the newest `*Antigravity*IDE*.tar.gz` in `~/Downloads`
+  or current working directory.
+- **Clean Uninstallation**: Single-command removal via `--uninstall`.
+
+### Usage
+
+```bash
+chmod +x install-antigravity-ide.sh
+
+# Auto-detect latest Antigravity IDE .tar.gz in ~/Downloads:
+./install-antigravity-ide.sh
+
+# Explicit tarball:
+./install-antigravity-ide.sh ~/Downloads/"Antigravity IDE.tar.gz"
+
+# Uninstall:
+./install-antigravity-ide.sh --uninstall
+```
+
+---
+
+## 3. Godot Engine Installer & Updater
 
 ### Features
 
@@ -141,7 +179,7 @@ Options:
 
 ---
 
-## 3. LM Studio Installer & Updater
+## 4. LM Studio Installer & Updater
 
 ### Features
 
@@ -220,9 +258,10 @@ Options:
 ## Launching Applications
 
 - **From KDE Application Launcher / KRunner**: Press `Alt + Space` and search for `Antigravity`,
-  `Godot`, or `LM Studio`.
+  `Antigravity IDE`, `Godot`, or `LM Studio`.
 - **From Terminal**:
-    - `antigravity`
+    - `antigravity` (Antigravity Desktop App)
+    - `antigravity-ide` or `agy-ide` (Antigravity IDE)
     - `godot` (or `godot -e` to edit, `godot project.godot` to open a project)
     - `lm-studio` (or `lmstudio`)
 

@@ -248,7 +248,7 @@ for tool in unzip file; do
 done
 
 # Check if application is currently running
-if pgrep -fi "godot" >/dev/null 2>&1; then
+if pgrep -i "^godot" >/dev/null 2>&1; then
     log_warn "Godot appears to be currently running."
     log_warn "If you experience issues, please close Godot before updating."
 fi

@@ -268,7 +268,7 @@ for tool in realpath mktemp find cut grep; do
 done
 
 # Check if application is currently running
-if pgrep -fi "lm-studio|lmstudio" >/dev/null 2>&1; then
+if pgrep -i "^(lm-studio|lmstudio)" >/dev/null 2>&1; then
     log_warn "LM Studio appears to be currently running."
     log_warn "If you experience issues, please close LM Studio before updating."
 fi

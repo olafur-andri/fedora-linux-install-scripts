@@ -270,7 +270,7 @@ if [[ ! -f "${ARCHIVE_PATH}" ]]; then
 fi
 
 # Check if application is currently running
-if pgrep -f "antigravity-ide" >/dev/null 2>&1; then
+if pgrep -x "antigravity-ide" >/dev/null 2>&1; then
     log_warn "${APP_NAME} appears to be currently running."
     log_warn "If you experience issues, please close ${APP_NAME} before updating."
 fi
